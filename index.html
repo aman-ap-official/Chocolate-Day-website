@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Day</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #8B4513;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        #choco {
+            margin-top: 20px;
+            font-size: 24px;
+            opacity: 1;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid white;
+            width: 0;
+            animation: typing 3s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
+        }
+        .floating-choco {
+            position: absolute;
+            font-size: 40px;
+            animation: floatChoco 5s infinite;
+        }
+        @keyframes floatChoco {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-100px); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Chocolate Day!</h1>
+        <p>Indulge in the sweetness of chocolates and spread love.</p>
+        <div id="choco">🍫 Enjoy the Sweetness! 🍫</div>
+    </div>
+    <script>
+        function createFloatingChoco() {
+            for (let i = 0; i < 10; i++) {
+                let choco = document.createElement('div');
+                choco.innerText = '🍫';
+                choco.classList.add('floating-choco');
+                choco.style.left = Math.random() * window.innerWidth + 'px';
+                choco.style.top = Math.random() * window.innerHeight + 'px';
+                choco.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                document.body.appendChild(choco);
+            }
+        }
+        createFloatingChoco();
+    </script>
+</body>
+</html>
